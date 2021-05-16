@@ -1,0 +1,127 @@
+<body>
+<app-menu></app-menu>
+
+    <form action="" id="forms" method="">
+        <Fieldset id="field">
+            <legend>Choose your fly</legend>
+            <br>
+            <br>
+        
+            <div class="Dep">
+                <select id="Departing">
+                    <option disabled selected>Departing from...</option>
+                    <option value="Katowice">Katowice</option>
+                    <option value="Lodz">Łódż</option>
+                </select>
+                <div class="air"><img src="./assets/air.png" alt="" srcset="">
+                </div>
+
+                <input type="date" name="date" id="Departing">
+            </div>
+            <br>
+            <br>
+
+
+            <div class="Arr">
+                <select id="Arriving">
+                    <option disabled selected>Arriving to ...</option>
+                    <option value="Warsaw" ng-model="myVar">Warszawa</option>
+                    <option value="Paris">Paryż</option>
+                    <option value="NewYork">Nowy Jork</option>
+                </select>
+
+                <div class="air"><img src="./assets/air1.png" alt="" srcset="">
+                </div>
+                <input type="date" name="date" id="Arriving">
+            </div>
+
+
+            <label for="passengers">Adult Passengers</label>
+            <input type="number" name="passengers" id="adult" min="1" max="10">
+
+            <br>
+            <label for="Kids">Kids</label>
+            <input type="number" name="Kids" id="kids" min="1" max="10">
+            <br>
+            <label for="luggage">Extra luggage</label>
+            <input type="checkbox" name="" id="luggage">
+            <br>
+
+            <label for="pet">Pets</label>
+            <input type="checkbox" name="pet" id="">
+            <br>
+            <app-plane1 ng-hide="myVar"></app-plane1>
+            
+            <input type="submit" (click) = "openForm()" value="Confirm your order" id="Confirm">
+
+            
+            <div  *ngIf = "myForm" class="form-popup" id="myForm"  >
+
+                <form action="#" class="form-container">
+                    <h1>Sign In</h1>
+                    
+                    <input type="text" placeholder="Enter Name Surename" name="profile" required>
+        
+                    <input type="text" placeholder="Enter Email" name="email" required>
+        
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+                    <button type="submit" class="btn">Sign In</button>
+                    <button type="button" class="cancel" id="cancel" (click) = openForm() >Close</button>
+                </form>
+            </div>
+
+        </Fieldset>
+    </form>
+
+
+
+    
+    <a href="#" title="GoUp" class="topbutton">^GoUp</a>
+    
+    <div class="weather0">
+    <div class="weather1">
+        <span class="weather__city"></span>
+        <span class="weather__forecast"></span>
+        <span class="weather__desc"></span>
+        <div class="weather__icon"></div>
+    </div>
+    <div class="weather2">
+        <span class="weather__city2"></span>
+        <span class="weather__forecast2"></span>
+        <span class="weather__desc2"></span>
+        <div class="weather__icon2"></div>
+    </div>
+    <div class="weather3">
+        <span class="weather__city3"></span>
+        <span class="weather__forecast3"></span>
+        <span class="weather__desc3"></span>
+        <div class="weather__icon3"></div>
+    </div>
+</div>
+
+    <div class="AboutUs">
+        <h3 id="AboutUs">About Us</h3>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non laboriosam corporis animi optio ut
+            accusantium adipisci soluta ea inventore quos ratione eaque, nesciunt sapiente, eos temporibus consequatur
+            culpa in tempora. 
+            <br> Beatae sequi omnis facere ea at deserunt, voluptates commodi eaque modi libero quae
+            nostrum accusamus quas alias et illo magni a? Doloremque, est cumque hic nam minima consequatur in alias
+            libero delectus quos quaerat unde saepe, ipsa labore incidunt amet ad. Quis tenetur rerum id possimus,
+            facere fugiat sint cum voluptate labore necessitatibus eveniet ex consectetur molestias culpa assumenda
+            quisquam dicta corporis laborum ipsa itaque, deserunt, magni ea hic.</p>
+
+    </div>
+
+    <div class="container">
+        <h3 id="contacts">Contacts</h3>
+        <a href="#" class="fa fa-facebook-official"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+    </div>
+
+
+
+</body>
