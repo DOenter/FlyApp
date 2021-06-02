@@ -1,7 +1,6 @@
-<body>
 <app-menu></app-menu>
 
-    <form action="" id="forms" method="">
+    <form id="forms">
         <Fieldset id="field">
             <legend>Choose your fly</legend>
             <br>
@@ -23,11 +22,11 @@
 
 
             <div class="Arr">
-                <select id="Arriving">
+                <select id="Arriving" (change)="selectCity($event.target)">
                     <option disabled selected>Arriving to ...</option>
-                    <option value="Warsaw" ng-model="myVar">Warszawa</option>
+                    <option value="Warsaw">Warszawa</option>
                     <option value="Paris">Paryż</option>
-                    <option value="NewYork">Nowy Jork</option>
+                    <option value="New York">Nowy Jork</option>
                 </select>
 
                 <div class="air"><img src="./assets/air1.png" alt="" srcset="">
@@ -36,12 +35,12 @@
             </div>
 
 
-            <label for="passengers">Adult Passengers</label>
+            <label for="passengers">Adult Passengers (16+)</label>
             <input type="number" name="passengers" id="adult" min="1" max="10">
 
             <br>
             <label for="Kids">Kids</label>
-            <input type="number" name="Kids" id="kids" min="1" max="10">
+            <input type="number" name="Kids" id="kids" min="0" max="10">
             <br>
             <label for="luggage">Extra luggage</label>
             <input type="checkbox" name="" id="luggage">
@@ -50,12 +49,43 @@
             <label for="pet">Pets</label>
             <input type="checkbox" name="pet" id="">
             <br>
-            <app-plane1 ng-hide="myVar"></app-plane1>
+
+
+            <div class="weather0">
+                <div class="weather1">
+                    <span class="weather__city"></span>
+                    <span class="weather__forecast"></span>
+                    <span class="weather__desc"></span>
+                    <div class="weather__icon"></div>
+                </div>
+                <div class="weather2">
+                    <span class="weather__city2"></span>
+                    <span class="weather__forecast2"></span>
+                    <span class="weather__desc2"></span>
+                    <div class="weather__icon2"></div>
+                </div>
+                <div class="weather3">
+                    <span class="weather__city3"></span>
+                    <span class="weather__forecast3"></span>
+                    <span class="weather__desc3"></span>
+                    <div class="weather__icon3"></div>
+                </div>
+            </div>
+
+
+
+            <app-plane1 *ngIf="isShown == 'Warsaw'"></app-plane1>
+            <app-plane2 *ngIf="isShown == 'Paris'"></app-plane2>
+            <app-plane3 *ngIf="isShown == 'New York'"></app-plane3>
             
+
+
+
+
             <input type="submit" (click) = "openForm()" value="Confirm your order" id="Confirm">
 
             
-            <div  *ngIf = "myForm" class="form-popup" id="myForm"  >
+            <div  *ngIf = "!myForm" class="form-popup" id="myForm"  >
 
                 <form action="#" class="form-container">
                     <h1>Sign In</h1>
@@ -122,6 +152,3 @@
         <a href="#" class="fa fa-google"></a>
     </div>
 
-
-
-</body>

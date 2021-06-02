@@ -8,6 +8,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BaseComponent } from './components/base/base.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { Plane1Component } from './components/plane1/plane1.component';
+import {HttpClientModule} from '@angular/common/http';
+import { Plane2Component } from './components/plane2/plane2.component';
+import { Plane3Component } from './components/plane3/plane3.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,16 @@ import { Plane1Component } from './components/plane1/plane1.component';
     BaseComponent,
     MenuComponent,
     Plane1Component,
-    
+    Plane2Component,
+    Plane3Component,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }
