@@ -1,5 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@media(max-width : 600px){
+    html {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #logo{
+        display: flex;
+        justify-content: center;
 
+}
+    .air{
+    margin-top: 10px;
+    height: 100px;
+    width:  140px;
+    }
+    a{
+        font-size: medium;
+    }
+    a.fa{
+        padding: 12px;
+    }
+    .Arr{
+        margin-top: 100px;
+
+    }
+    
+
+}
 
 html {
     margin: 0;
@@ -20,5 +47,5 @@ html {
 
 .dark{
     background-color: black;
-    color: yellow;
+    color: orange;
 }

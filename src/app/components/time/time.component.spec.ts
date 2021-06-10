@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BaseComponent } from './base.component';
+import { TimeComponent } from './time.component';
 
-describe('BaseComponent', () => {
-  let component: BaseComponent;
-  let fixture: ComponentFixture<BaseComponent>;
+describe('TimeComponent', () => {
+  let component: TimeComponent;
+  let fixture: ComponentFixture<TimeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BaseComponent ]
+      declarations: [ TimeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BaseComponent);
+    fixture = TestBed.createComponent(TimeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

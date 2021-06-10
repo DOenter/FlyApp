@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-
+import { HttpClient } from '@angular/common/http';
+import {WcagService } from '../services/wcag.service';
 
 @Component({
   selector: 'app-main',
@@ -9,31 +8,132 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  title = 'FlyApp';
+  
+  myForm = false;
+  currentCity: any;
+  isShown: any;
+  public weatherInfo: any;
+  totalPrice: number = 0;
 
-  constructor(private http: HttpClient,) { }
+
+  public selectList = [
+    {
+      city: 'Warsaw',
+      price: 175,
+    },
+    {
+      city: 'Paris',
+      price: 600,
+    },
+    {
+      city: 'New York',
+      price: 1700,
+    },
+  ];
+  public selectList1 = [
+    {
+      city: 'Lodz',
+    },
+    {
+      city: 'Katowice',
+    },
+  ];
+
+
+
+
+
+
+  public currentSelectedCity: any;
+
+  public currencies = ['CHF', 'USD', 'EUR'];
+  public currentCurrency = 'CHF';
+  public responseCurrency: number = 1;
+
+  constructor(private http: HttpClient, public wcagService:WcagService) { }
 
   ngOnInit() {
-
+    // this.getCurrency();
   }
 
-  isShown: any;
+  selectCity(event: any) {
+    this.isShown = event.target.value;
 
-  selectCity(id: any) {
-    this.isShown = id.value;
+    this.currentSelectedCity = this.selectList.find((item) => item.city === event.target.value);
+    this.totalPrice = this.currentSelectedCity.price;
+    this.loadWeatherByCity(this.currentSelectedCity.city);
   }
 
+  loadWeatherByCity(currentCityValue: string) {
+    this.http.get(`http://api.openweathermap.org/data/2.5/weather?q=${currentCityValue}&appid=3d14f364f53109c68f475c97c869942d`).subscribe(response => {
+      this.weatherInfo = response;
+    });
+  }
 
-
-  title = 'FlyApp';
-  myForm = false;
-
+  calculateDeg() {
+    return Math.round(this.weatherInfo.main.temp - 273);
+  }
 
   openForm() {
     this.myForm = !this.myForm;
   }
-  getWeather() {
-    return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=Warsaw&appid=3d14f364f53109c68f475c97c869942d')
+
+  selectCurrency(event: any) {
+    return this.http.get(`https://api.nbp.pl/api/exchangerates/rates/a/${event.target.value}/?format=json`)
+    .subscribe((response: any) => {
+      console.log('currency', response);
+      this.responseCurrency = response.rates[0].mid;
+      console.log(this.responseCurrency);
+      this.totalPrice = +(this.currentSelectedCity.price / this.responseCurrency).toFixed(1);
+    });
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // getWeather() {
+  //   return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=Warsaw&appid=3d14f364f53109c68f475c97c869942d')
+  // }
 
   // document.getElementById("Arriving").addEventListener("change", function (e) {
   //   const currentCity = e.target.value;
@@ -54,6 +154,7 @@ export class MainComponent implements OnInit {
   //       console.error(err);
   //     });
   //   });
+
 
 
 }

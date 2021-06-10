@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WcagService } from '../services/wcag.service';
 
 
 @Component({
@@ -8,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  constructor() {}
+
+  ngOnInit() {}
+  
 
 }
