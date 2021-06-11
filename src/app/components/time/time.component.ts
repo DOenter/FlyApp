@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./time.component.scss']
 })
 export class TimeComponent implements OnInit {
-private daysArray = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+private daysArray = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',];
 private date = new Date();
 public hour: any;
 public minute: any;
