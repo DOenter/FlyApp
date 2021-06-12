@@ -66,7 +66,7 @@ export class MainComponent implements OnInit {
   }
 
   loadWeatherByCity(currentCityValue: string) {
-    this.http.get(`http://api.openweathermap.org/data/2.5/weather?q=${currentCityValue}&appid=3d14f364f53109c68f475c97c869942d`).subscribe(response => {
+    this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${currentCityValue}&appid=3d14f364f53109c68f475c97c869942d`).subscribe(response => {
       this.weatherInfo = response;
     });
   }
